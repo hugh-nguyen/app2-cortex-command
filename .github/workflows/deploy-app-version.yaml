@@ -1,0 +1,25 @@
+name: Deploy App Version
+
+on:
+  # push:
+  #   branches:
+  #     - main
+  #   paths:
+  #     - 'app-version-manifests/**'
+  #     - 'route-overrides.yaml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  dispatch-remote-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger the "Pull Manifests and Routes" workflow in hugh-nguyen/cortex
+        run: |
+          curl -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: token ${{ secrets.GH_PERSONAL_TOKEN }}" \
+            https://api.github.com/repos/hugh-nguyen/cortex/actions/workflows/deploy-app-version-and-routes.yaml/dispatches \
+            -d '{"ref":"main","inputs":{"source_repo":"hugh-nguyen/app2-cortex-command"}}'
