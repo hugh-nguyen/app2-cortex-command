@@ -1,0 +1,4 @@
+apiVersion: v2
+name: app12service-y-chart
+description: Helm chart to deploy service-y
+version: 0.1.0

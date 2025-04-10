@@ -1,0 +1,17 @@
+name: Create Manifest and Deploy
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  cortex-deploy:
+    uses: hugh-nguyen/cortex/.github/workflows/create-manifest-and-deploy.yaml@main
+    with:
+      app_name: app2
+    secrets:
+      GH_PERSONAL_TOKEN: ${{ secrets.GH_PERSONAL_TOKEN }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

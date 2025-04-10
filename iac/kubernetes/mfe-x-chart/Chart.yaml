@@ -1,0 +1,4 @@
+apiVersion: v2
+name: app2-service-x-chart
+description: Helm chart to deploy service-x
+version: 0.1.0
