@@ -3,7 +3,7 @@ services:
 - service-y: "*" 
 
 dependencies:
-- shared-app/service-s: "0.0.1"
+- shared-app/service-s: "~0.0.1"
 
 links:
 - source: mfe-x

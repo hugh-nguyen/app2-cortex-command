@@ -12,8 +12,8 @@ export class App2ServiceYStack extends cdk.Stack {
     const version = this.node.tryGetContext('version') as string ?? 'dev';
 
     // Create Lambda function from TypeScript
-    const lambdaFunction = new nodejsLambda.NodejsFunction(this, 'App2ServiceYLambda', {
-      functionName: `app2-service-y-${version}`,
+    const lambdaFunction = new nodejsLambda.NodejsFunction(this, `app2-service-y-${version}-lambda-function`, {
+      functionName: `app2-service-y-${version}-lambda-function`,
       entry: path.join(__dirname, '../../app2-service-y/dist/index.js'),
       handler: 'handler',
       runtime: lambda.Runtime.NODEJS_18_X,
@@ -25,8 +25,8 @@ export class App2ServiceYStack extends cdk.Stack {
     });
 
     // Create API Gateway
-    const api = new apigateway.RestApi(this, 'App2ServiceYApi', {
-      restApiName: `app2-service-y-${version}`,
+    const api = new apigateway.RestApi(this, `app2-service-y-${version}-api`, {
+      restApiName: `app2-service-y-${version}-api`,
       deployOptions: {
         stageName: 'prod'
       },
